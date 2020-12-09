@@ -2,6 +2,6 @@
 {
     public interface IPresenter
     {
-
+        IKeyValueState PresenterState { get; }
     }
 }

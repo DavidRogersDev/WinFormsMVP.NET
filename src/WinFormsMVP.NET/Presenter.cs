@@ -5,9 +5,11 @@
     {
         protected Presenter(TView view)
         {
+            PresenterState = new KeyValueState();;
             View = view;
         }
 
         public TView View { get; }
+        public IKeyValueState PresenterState { get; }
     }
 }
