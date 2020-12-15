@@ -14,6 +14,6 @@ namespace WinFormsMVP.NET.Forms
             PresenterBinder.PerformBinding(this);
         }
 
-        public bool ThrowExceptionIfNoPresenterBound { get; private set; }
+        public bool ThrowExceptionIfNoPresenterBound { get; }
     }
 }

@@ -7,9 +7,8 @@ namespace WinFormsMVP.NET.SimpleInjector
 {
     public class SimpleInjectorPresenterFactory : IPresenterFactory
     {
-        private Container _container;
-        private readonly ThreadLocal<IView> _currentView = new ThreadLocal<IView>();
-        private bool _disposed;
+        private readonly Container _container;
+        private ThreadLocal<IView> _currentView = new ThreadLocal<IView>();
 
         public SimpleInjectorPresenterFactory(Container container)
         {
@@ -45,28 +44,5 @@ namespace WinFormsMVP.NET.SimpleInjector
             var disposablePresenter = presenter as IDisposable;
             disposablePresenter?.Dispose();
         }
-
-        #region IDisposable Members
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed)
-                return;
-
-            if (disposing && _container != null)
-            {
-                _container.Dispose();
-                _container = null;
-                _disposed = true;
-            }
-        }
-
-        #endregion
     }
 }

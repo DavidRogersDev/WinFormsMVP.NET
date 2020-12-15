@@ -97,10 +97,10 @@ namespace WinFormsMVP.NET.Binder
                     p => OnPresenterCreated(new PresenterCreatedEventArgs(p)),
                     Factory);
 
-            }
+            }   
             catch (Exception e)
             {
-
+                    
             }
         }
 
