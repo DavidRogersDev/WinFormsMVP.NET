@@ -2,8 +2,8 @@
 {
     public enum TraceEventIdentifiers
     {
-        BindingsInfoTrace = 51,
-        FindingBindingsMessageTrace = 52,
-        ActualBindingDetailsTrace = 55
+        BindingsInfoTrace = 10000,
+        FindingBindingsMessageTrace = 10001,
+        ActualBindingDetailsTrace = 100002
     }
 }

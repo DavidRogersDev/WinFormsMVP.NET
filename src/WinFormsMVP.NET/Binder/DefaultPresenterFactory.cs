@@ -22,13 +22,13 @@ namespace WinFormsMVP.NET.Binder
         public IPresenter Create(Type presenterType, Type viewType, IView viewInstance)
         {
             if (presenterType == null)
-                throw new ArgumentNullException("presenterType");
+                throw new ArgumentNullException(nameof(presenterType));
 
             if (viewType == null)
-                throw new ArgumentNullException("viewType");
+                throw new ArgumentNullException(nameof(viewType));
 
             if (viewInstance == null)
-                throw new ArgumentNullException("viewInstance");
+                throw new ArgumentNullException(nameof(viewInstance));
 
             var buildMethod = GetBuildMethod(presenterType, viewType);
 
@@ -61,13 +61,11 @@ namespace WinFormsMVP.NET.Binder
         public void Release(IPresenter presenter)
         {
             var disposablePresenter = presenter as IDisposable;
-            if (disposablePresenter != null)
-            {
-                disposablePresenter.Dispose();
-            }
+            disposablePresenter?.Dispose();
         }
 
         static readonly IDictionary<string, DynamicMethod> buildMethodCache = new Dictionary<string, DynamicMethod>();
+
         internal static DynamicMethod GetBuildMethod(Type presenterType, Type viewType)
         {
             // We need to scope the cache against both the presenter type and the view type.
@@ -89,10 +87,11 @@ namespace WinFormsMVP.NET.Binder
                     CultureInfo.InvariantCulture,
                     "{0} does not meet accessibility requirements. For the WebFormsMvp framework to be able to call it, it must be public. Make the type public, or set PresenterBinder.Factory to an implementation that can access this type.",
                     presenterType.FullName),
-                    "presenterType");
+                    nameof(presenterType));
             }
 
             var constructor = presenterType.GetConstructor(new[] { viewType });
+
             if (constructor == null)
             {
                 throw new ArgumentException(string.Format(
@@ -100,7 +99,7 @@ namespace WinFormsMVP.NET.Binder
                     "{0} is missing an expected constructor, or the constructor is not accessible. We tried to execute code equivalent to: new {0}({1} view). Add a public constructor with a compatible signature, or set PresenterBinder.Factory to an implementation that can supply constructor dependencies.",
                     presenterType.FullName,
                     viewType.FullName),
-                    "presenterType");
+                    nameof(presenterType));
             }
 
             // Using DynamicMethod and ILGenerator allows us to hold on to a
