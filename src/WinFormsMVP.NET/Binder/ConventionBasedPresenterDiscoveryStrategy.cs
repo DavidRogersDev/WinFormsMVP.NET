@@ -52,10 +52,10 @@ namespace WinFormsMVP.NET.Binder
         static readonly IEnumerable<string> defaultCandidatePresenterTypeFullNameFormats =
             new[]
             {
-                "{namespace}.Logic.Presenters.{presenter}",
                 "{namespace}.Presenters.{presenter}",
-                "{namespace}.Logic.{presenter}",
-                "{namespace}.{presenter}"
+                "{namespace}.{presenter}",
+                "{namespace}.Logic.Presenters.{presenter}",
+                "{namespace}.Logic.{presenter}"
             };
 
         /// <summary>

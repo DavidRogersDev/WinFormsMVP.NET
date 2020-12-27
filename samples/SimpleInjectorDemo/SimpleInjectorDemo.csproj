@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\WinFormsMVP.NET.SimpleInjector\WinFormsMVP.NET.SimpleInjector.csproj" />
+    <ProjectReference Include="..\..\src\WinFormsMVP.NET\WinFormsMVP.NET.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MockData\orders.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

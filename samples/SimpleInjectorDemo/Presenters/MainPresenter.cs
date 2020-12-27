@@ -1,21 +1,21 @@
 ﻿using System.Linq;
-using Basic.Services;
-using Basic.Views;
+using SimpleInjectorDemo.Services;
+using SimpleInjectorDemo.Views;
 using WinFormsMVP.NET;
 
-namespace Basic.Presenters
+namespace SimpleInjectorDemo.Presenters
 {
     public class MainPresenter : Presenter<IMainView>
     {
-        private readonly OrdersService _ordersService;
+        private readonly IOrdersService _ordersService;
 
-        public MainPresenter(IMainView view) 
+        public MainPresenter(IMainView view, IOrdersService ordersService) 
             : base(view)
         {
             View.Load += View_Load;
             View.OrderFiltered += View_OrderFiltered;
             
-            _ordersService = new OrdersService();
+            _ordersService = ordersService;
         }
 
         public void View_Load(object sender, System.EventArgs e)

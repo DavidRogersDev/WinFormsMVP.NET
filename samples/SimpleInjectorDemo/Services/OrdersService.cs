@@ -3,12 +3,20 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text.Json;
-using Basic.Services.DataTransferObjects;
+using SimpleInjectorDemo.Services.DataTransferObjects;
 
-namespace Basic.Services
+namespace SimpleInjectorDemo.Services
 {
-    public class OrdersService
+    public class OrdersService : IOrdersService
     {
+        public bool AddOrder(AddProductDto dto)
+        {
+            // This method is just a stub. Order won't actually be added to the json file
+            // logic would go here to add an order -- hit database etc. 👍
+
+            return true;
+        }
+
         public IEnumerable<OrderDto> GetOrders()
         {
             ZipFile.ExtractToDirectory(
