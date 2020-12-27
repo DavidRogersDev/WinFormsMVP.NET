@@ -7,5 +7,6 @@ namespace SimpleInjectorDemo.Presenters
     public interface IAddProductView : IView
     {
         event EventHandler<AddProductDto> AddProductEvent;
+        void NotifyOpResult(bool succeeded);
     }
 }

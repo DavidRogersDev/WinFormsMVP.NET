@@ -15,6 +15,7 @@ namespace SimpleInjectorDemo.Forms
             OrdersGrid.DataSource = OrdersBindingSource;
         }
 
+        public event EventHandler ClearFilter;
         public event EventHandler<int> OrderFiltered;
 
         public void PopulateList(IEnumerable<OrderDto> orders)
@@ -41,6 +42,26 @@ namespace SimpleInjectorDemo.Forms
             OrderFiltered(sender, (int)OrdersFilterComboBox.SelectedItem);
         }
 
+        private void AddNewProductButton_Click(object sender, EventArgs e)
+        {
+            var addProductForm = new AddProductForm();            
+            addProductForm.ShowDialog();
+        }
+
+        public void ClearSelectedFilter()
+        {
+            OrdersFilterComboBox.SelectedIndexChanged -= OrdersFilterComboBox_SelectedIndexChanged;
+            
+            OrdersFilterComboBox.SelectedIndex = -1;
+
+            OrdersFilterComboBox.SelectedIndexChanged += OrdersFilterComboBox_SelectedIndexChanged;
+        }
+
+        private void ClearFilterButton_Click(object sender, EventArgs e)
+        {
+            ClearFilter?.Invoke(sender, EventArgs.Empty);
+        }
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -52,12 +73,6 @@ namespace SimpleInjectorDemo.Forms
                 components.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private void AddNewProductButton_Click(object sender, EventArgs e)
-        {
-            var addProductForm = new AddProductForm();            
-            addProductForm.ShowDialog();
         }
     }
 }

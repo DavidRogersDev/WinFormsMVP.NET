@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using SimpleInjectorDemo.Presenters;
 using SimpleInjectorDemo.Services.DataTransferObjects;
 using WinFormsMVP.NET.Forms;
@@ -16,6 +17,8 @@ namespace SimpleInjectorDemo.Forms
 
         private void AddProductButton_Click(object sender, EventArgs e)
         {
+            LabelOpResult.Visible = false;
+
             var addProduct = new AddProductDto
             {
                 Discontinued = DiscontinuedCheckBox.Checked,
@@ -27,6 +30,14 @@ namespace SimpleInjectorDemo.Forms
             };
 
             AddProductEvent?.Invoke(sender, addProduct);
+        }
+
+        public void NotifyOpResult(bool succeeded)
+        {
+            LabelOpResult.Visible = true;
+
+            LabelOpResult.Text = succeeded ? "Operation Succeeded" : "Operation Failed";
+            LabelOpResult.ForeColor = succeeded ? Color.Green : Color.Red;
         }
     }
 }

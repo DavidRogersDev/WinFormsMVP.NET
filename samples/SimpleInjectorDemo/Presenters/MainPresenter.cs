@@ -14,6 +14,7 @@ namespace SimpleInjectorDemo.Presenters
         {
             View.Load += View_Load;
             View.OrderFiltered += View_OrderFiltered;
+            View.ClearFilter += View_ClearFilter;
             
             _ordersService = ordersService;
         }
@@ -32,5 +33,14 @@ namespace SimpleInjectorDemo.Presenters
 
             View.FilterList(filteredOrders);
         }
+
+        private void View_ClearFilter(object sender, System.EventArgs e)
+        {
+            var orders = _ordersService.GetOrders();
+
+            View.ClearSelectedFilter();
+            View.PopulateList(orders);
+        }
+
     }
 }

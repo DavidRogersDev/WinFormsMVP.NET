@@ -17,7 +17,9 @@ namespace SimpleInjectorDemo.Presenters
 
         private void View_AddProductEvent(object sender, Services.DataTransferObjects.AddProductDto dto)
         {
-            _ordersService.AddOrder(dto);
+            var opResult = _ordersService.AddOrder(dto);
+
+            View.NotifyOpResult(opResult);
         }
     }
 }

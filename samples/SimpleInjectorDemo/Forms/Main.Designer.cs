@@ -21,6 +21,7 @@ namespace SimpleInjectorDemo.Forms
             this.OrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.OrdersFilterComboBox = new System.Windows.Forms.ComboBox();
             this.AddNewProductButton = new System.Windows.Forms.Button();
+            this.ClearFilterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -56,11 +57,22 @@ namespace SimpleInjectorDemo.Forms
             this.AddNewProductButton.UseVisualStyleBackColor = true;
             this.AddNewProductButton.Click += new System.EventHandler(this.AddNewProductButton_Click);
             // 
+            // ClearFilterButton
+            // 
+            this.ClearFilterButton.Location = new System.Drawing.Point(254, 20);
+            this.ClearFilterButton.Name = "ClearFilterButton";
+            this.ClearFilterButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearFilterButton.TabIndex = 3;
+            this.ClearFilterButton.Text = "Clear";
+            this.ClearFilterButton.UseVisualStyleBackColor = true;
+            this.ClearFilterButton.Click += new System.EventHandler(this.ClearFilterButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 461);
+            this.Controls.Add(this.ClearFilterButton);
             this.Controls.Add(this.AddNewProductButton);
             this.Controls.Add(this.OrdersFilterComboBox);
             this.Controls.Add(this.OrdersGrid);
@@ -78,5 +90,6 @@ namespace SimpleInjectorDemo.Forms
         private System.Windows.Forms.BindingSource OrdersBindingSource;
         private System.Windows.Forms.ComboBox OrdersFilterComboBox;
         private System.Windows.Forms.Button AddNewProductButton;
+        private System.Windows.Forms.Button ClearFilterButton;
     }
 }
