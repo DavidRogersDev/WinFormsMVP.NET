@@ -193,6 +193,7 @@ namespace SimpleInjectorDemo.Forms
             this.Controls.Add(this.ProductNameTextBox);
             this.Name = "AddProductForm";
             this.Text = "Form to Add a Product";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddProductForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.StockLevelNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReorderLevelNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnOrderNumeric)).EndInit();

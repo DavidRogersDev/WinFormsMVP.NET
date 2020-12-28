@@ -7,6 +7,7 @@ namespace SimpleInjectorDemo.Views
 {
     public interface IMainView : IView
     {
+        event EventHandler CleanUp;
         event EventHandler ClearFilter;
         event EventHandler<int> OrderFiltered;
         void ClearSelectedFilter();

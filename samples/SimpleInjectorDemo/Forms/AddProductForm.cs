@@ -2,6 +2,7 @@
 using System.Drawing;
 using SimpleInjectorDemo.Presenters;
 using SimpleInjectorDemo.Services.DataTransferObjects;
+using SimpleInjectorDemo.Views;
 using WinFormsMVP.NET.Forms;
 
 namespace SimpleInjectorDemo.Forms
@@ -13,6 +14,7 @@ namespace SimpleInjectorDemo.Forms
             InitializeComponent();
         }
 
+        public event EventHandler CleanUp;
         public event EventHandler<AddProductDto> AddProductEvent;
 
         private void AddProductButton_Click(object sender, EventArgs e)
@@ -38,6 +40,11 @@ namespace SimpleInjectorDemo.Forms
 
             LabelOpResult.Text = succeeded ? "Operation Succeeded" : "Operation Failed";
             LabelOpResult.ForeColor = succeeded ? Color.Green : Color.Red;
+        }
+
+        private void AddProductForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            CleanUp?.Invoke(sender, EventArgs.Empty);
         }
     }
 }

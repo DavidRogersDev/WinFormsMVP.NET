@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -7,7 +8,7 @@ using SimpleInjectorDemo.Services.DataTransferObjects;
 
 namespace SimpleInjectorDemo.Services
 {
-    public class OrdersService : IOrdersService
+    public class OrdersService : IOrdersService, IDisposable
     {
         public bool AddOrder(AddProductDto dto)
         {
@@ -39,6 +40,11 @@ namespace SimpleInjectorDemo.Services
             var orders = JsonSerializer.Deserialize<IEnumerable<OrderDto>>(jsonString);
 
             return orders.Where(o => o.OrderId == orderId).Distinct();
+        }
+
+        public void Dispose()
+        {
+            // dispose of stuff here. Perhaps an EF context.
         }
     }
 }

@@ -5,13 +5,13 @@ namespace WinFormsMVP.NET.Forms
 {
     public class MvpForm : Form, IView
     {
-        protected PresenterBinder PresenterBinder = new PresenterBinder();
+        private readonly PresenterBinder _presenterBinder = new PresenterBinder();
 
         public MvpForm()
         {
             ThrowExceptionIfNoPresenterBound = true;
             
-            PresenterBinder.PerformBinding(this);
+            _presenterBinder.PerformBinding(this);
         }
 
         public bool ThrowExceptionIfNoPresenterBound { get; }

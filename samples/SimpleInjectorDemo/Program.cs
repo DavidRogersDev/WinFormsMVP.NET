@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using SimpleInjector;
+using SimpleInjector.Lifestyles;
 using SimpleInjectorDemo.Forms;
 using SimpleInjectorDemo.Presenters;
 using SimpleInjectorDemo.Services;
@@ -22,15 +23,18 @@ namespace SimpleInjectorDemo
             Application.SetCompatibleTextRenderingDefault(false);
 
             var container = new Container();
-            container.Options.EnableAutoVerification = false;
-
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+            
             container.Register<IOrdersService, OrdersService>(Lifestyle.Transient);
             container.Register<MainPresenter>(Lifestyle.Transient);
             container.Register<AddProductPresenter>(Lifestyle.Transient);
 
-            PresenterBinder.Factory = new SimpleInjectorPresenterFactory(container);    
+            using (AsyncScopedLifestyle.BeginScope(container))
+            {
+                PresenterBinder.Factory = new SimpleInjectorPresenterFactory(container);
 
-            Application.Run(new Main());
+                Application.Run(new Main());
+            }
         }
     }
 }

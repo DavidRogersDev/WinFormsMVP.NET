@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SimpleInjectorDemo.Services.DataTransferObjects;
 using SimpleInjectorDemo.Views;
+using WinFormsMVP.NET.Binder;
 using WinFormsMVP.NET.Forms;
 
 namespace SimpleInjectorDemo.Forms
@@ -15,6 +16,7 @@ namespace SimpleInjectorDemo.Forms
             OrdersGrid.DataSource = OrdersBindingSource;
         }
 
+        public event EventHandler CleanUp;
         public event EventHandler ClearFilter;
         public event EventHandler<int> OrderFiltered;
 
@@ -73,6 +75,11 @@ namespace SimpleInjectorDemo.Forms
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void Main_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            CleanUp?.Invoke(sender, EventArgs.Empty);
         }
     }
 }

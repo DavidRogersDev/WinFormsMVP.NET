@@ -78,6 +78,7 @@ namespace SimpleInjectorDemo.Forms
             this.Controls.Add(this.OrdersGrid);
             this.Name = "Main";
             this.Text = "Main";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersBindingSource)).EndInit();
             this.ResumeLayout(false);

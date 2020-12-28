@@ -1,11 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SimpleInjectorDemo.Services;
 using SimpleInjectorDemo.Views;
 using WinFormsMVP.NET;
+using WinFormsMVP.NET.Binder;
 
 namespace SimpleInjectorDemo.Presenters
 {
-    public class MainPresenter : Presenter<IMainView>
+    public class MainPresenter : Presenter<IMainView>, IDisposable
     {
         private readonly IOrdersService _ordersService;
 
@@ -15,7 +17,8 @@ namespace SimpleInjectorDemo.Presenters
             View.Load += View_Load;
             View.OrderFiltered += View_OrderFiltered;
             View.ClearFilter += View_ClearFilter;
-            
+            View.CleanUp += View_CleanUp;
+
             _ordersService = ordersService;
         }
 
@@ -42,5 +45,17 @@ namespace SimpleInjectorDemo.Presenters
             View.PopulateList(orders);
         }
 
+        private void View_CleanUp(object sender, System.EventArgs e)
+        {
+            PresenterBinder.Factory.Release(this);
+        }
+
+        public void Dispose()
+        {
+            if (_ordersService is IDisposable)
+            {
+                ((IDisposable)_ordersService).Dispose();
+            }
+        }
     }
 }
