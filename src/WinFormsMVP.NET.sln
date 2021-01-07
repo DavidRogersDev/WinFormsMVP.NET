@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsMVP.NET.SimpleInjec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsMVP.NET.Autofac", "WinFormsMVP.NET.Autofac\WinFormsMVP.NET.Autofac.csproj", "{05CFB83B-3D75-44C0-85EF-F4F19E6AF293}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsMVP.NET.Lamar", "WinFormsMVP.NET.Lamar\WinFormsMVP.NET.Lamar.csproj", "{F61616BD-AC33-4994-8077-11E4F6A3B68D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{05CFB83B-3D75-44C0-85EF-F4F19E6AF293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CFB83B-3D75-44C0-85EF-F4F19E6AF293}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CFB83B-3D75-44C0-85EF-F4F19E6AF293}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F61616BD-AC33-4994-8077-11E4F6A3B68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F61616BD-AC33-4994-8077-11E4F6A3B68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F61616BD-AC33-4994-8077-11E4F6A3B68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F61616BD-AC33-4994-8077-11E4F6A3B68D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
