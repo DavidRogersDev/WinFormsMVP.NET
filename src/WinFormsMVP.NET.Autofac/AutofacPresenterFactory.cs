@@ -76,12 +76,14 @@ namespace WinFormsMVP.NET.Autofac
 
         /// <summary>
         /// Releases the specified presenter from any of its lifestyle demands.
-        /// This method's activities are implementation specific - for example, an IoC based factory would return the presenter to the container.
         /// </summary>
         /// <param name="presenter">The presenter to release.</param>
         public virtual void Release(IPresenter presenter)
         {
-            //not required. Let Autofac release 
+            if (presenter is IDisposable)
+            {
+                ((IDisposable)presenter).Dispose();
+            }
         }
     }
 }

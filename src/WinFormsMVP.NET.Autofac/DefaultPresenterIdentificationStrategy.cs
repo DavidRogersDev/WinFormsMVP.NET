@@ -21,7 +21,7 @@ namespace WinFormsMVP.NET.Autofac
         /// <returns></returns>
         public Service ServiceForPresenterName(string presenterName)
         {
-            if (String.IsNullOrEmpty(presenterName))
+            if (string.IsNullOrEmpty(presenterName))
                 throw new ArgumentException("PresenterName must be suppled.", "presenterName");
             
             return new KeyedService(Prefix + presenterName.ToLowerInvariant(), typeof(IPresenter));
