@@ -1,5 +1,10 @@
 # WinFormsMVP.NET  
 
+[![NuGet](https://img.shields.io/nuget/v/WinFormsMVP.NET.svg?style=flat-square)](https://www.nuget.org/packages/WinFormsMVP.NET/) WinFormsMVP.NET      
+[![NuGet](https://img.shields.io/nuget/v/WinFormsMVP.NET.SimpleInjector.svg?style=flat-square)](https://www.nuget.org/packages/WinFormsMVP.NET.SimpleInjector/) WinFormsMVP.NET.SimpleInjector    
+[![NuGet](https://img.shields.io/nuget/v/WinFormsMVP.NET.Autofac.svg?style=flat-square)](https://www.nuget.org/packages/WinFormsMVP.NET.Autofac/) WinFormsMVP.NET.Autofac    
+    
+    
 A simple Model View Presenter framework for the Winforms platform.    
 
 **WinFormsMVP.NET** is a port of my previous framework, [WinFormsMVP](https://github.com/DavidRogersDev/WinformsMVP), to the new .NET platform (.NET 5).    
