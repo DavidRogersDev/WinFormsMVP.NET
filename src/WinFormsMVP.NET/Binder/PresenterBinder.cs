@@ -28,13 +28,6 @@ namespace WinFormsMVP.NET.Binder
             get => _factory ??= new DefaultPresenterFactory();
             set
             {
-                if (_factory != null)
-                {
-                    throw new InvalidOperationException(
-                        _factory is DefaultPresenterFactory
-                            ? "The factory has already been set, and can be not changed at a later time. In this case, it has been set to the default implementation. This happens if the factory is used before being explicitly set. If you wanted to supply your own factory, you need to do this in your Application_Start event."
-                            : "You can only set your factory once, and should really do this in Application_Start.");
-                }
                 _factory = value ?? throw new ArgumentNullException(nameof(value));
             }
         }

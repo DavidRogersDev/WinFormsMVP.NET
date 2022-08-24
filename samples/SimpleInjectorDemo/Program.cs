@@ -24,7 +24,12 @@ namespace SimpleInjectorDemo
 
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
-            
+
+#if DEBUG
+            container.Options.EnableAutoVerification = false;
+#endif
+
+
             container.Register<IOrdersService, OrdersService>(Lifestyle.Transient);
             container.Register<MainPresenter>(Lifestyle.Transient);
             container.Register<AddProductPresenter>(Lifestyle.Transient);
