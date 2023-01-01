@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - 'publish/**'
   pull_request:
     branches:
       - main
@@ -30,4 +31,4 @@ jobs:
           NUGET_URL: ${{ secrets.NUGET_URL }}
         run: |
           dotnet tool restore
-          ./build.sh --releaseNotes=${{ secrets.RELEASE_NOTES }}
+          ./build.sh --releaseNotes="Added support for .NET 7."
