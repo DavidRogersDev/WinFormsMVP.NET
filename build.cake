@@ -93,6 +93,8 @@ Task(versionTask)
             fileVersion = gitVersionInfo.AssemblySemFileVer;
             commit = gitVersionInfo.Sha;
             isPublishBranch = gitVersionInfo.BranchName.StartsWith("publish/") || gitVersionInfo.BranchName.Equals("main");
+
+            Information($"Building version {version.ToString()}")
         }
         catch
         {
