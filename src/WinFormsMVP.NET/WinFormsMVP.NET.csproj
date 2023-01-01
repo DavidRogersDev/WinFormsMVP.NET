@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
 		<PackageId>WinFormsMVP.NET</PackageId>
@@ -25,6 +26,11 @@
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.3" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0-windows' ">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

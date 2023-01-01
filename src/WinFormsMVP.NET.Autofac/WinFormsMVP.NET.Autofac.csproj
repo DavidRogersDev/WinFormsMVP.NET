@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0-windows;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<PackageId>WinFormsMVP.NET.Autofac</PackageId>
@@ -23,6 +24,10 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+		<PackageReference Include="Autofac" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0-windows' ">
 		<PackageReference Include="Autofac" Version="6.5.0" />
 	</ItemGroup>
 
