@@ -129,7 +129,7 @@ Task(buildTask)
 });
 
 Task(packTask)
- .WithCriteria(isPublishBranch)
+ //.WithCriteria(isPublishBranch)
  .IsDependentOn(buildTask)     
  .Does(() => {    
 	
@@ -162,7 +162,7 @@ Task(packTask)
  });
 
 Task(nugetPushTask)
- .WithCriteria(isPublishBranch)
+ //.WithCriteria(isPublishBranch)
  .IsDependentOn(packTask)     
  .Does(() => {    
 
