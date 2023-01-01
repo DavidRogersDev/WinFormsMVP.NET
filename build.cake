@@ -39,7 +39,7 @@ var projFileGlob = "./src/**/*.csproj";
 
 // Nuget Server Settings
 var variableMissing = "missing";
-var nugetApiKey = EnvironmentVariable("NUGET_GET") ?? variableMissing;
+var nugetApiKey = EnvironmentVariable("NUGET_API_KEY") ?? variableMissing;
 var nugetServer = EnvironmentVariable("NUGET_URL") ?? variableMissing;
 
 /**********************************************************************
@@ -126,6 +126,7 @@ Task(buildTask)
 
 Task(packTask)
  .IsDependentOn(buildTask)     
+ .WithCriteria(isPublishBranch)
  .Does(() => {    
 	
 	 var projects = GetFiles(projFileGlob);

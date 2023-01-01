@@ -1,0 +1,33 @@
+name: nuget-build-deploy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['6.0.x']
+    steps:
+      - name: Setup .NET ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Display dotnet version
+        run: dotnet --version
+      - name: Check out Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run cake
+        shell: bash
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_URL: ${{ secrets.NUGET_URL }}
+        run: |
+          dotnet tool restore
+          dotnet --target=build
