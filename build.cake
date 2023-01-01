@@ -95,6 +95,8 @@ Task(versionTask)
             isPublishBranch = gitVersionInfo.BranchName.StartsWith("publish/") || gitVersionInfo.BranchName.Equals("main");
 
             Information($"Building version {version.ToString()}");
+            Information($"BranchName {gitVersionInfo.BranchName.ToString()}");
+            Information($"isPublishBranch {gitVersionInfo.BranchName.StartsWith("publish/").ToString()}");
         }
         catch
         {
