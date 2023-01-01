@@ -30,4 +30,4 @@ jobs:
           NUGET_URL: ${{ secrets.NUGET_URL }}
         run: |
           dotnet tool restore
-          dotnet --target=build
+          ./build.ps1 --target=build
