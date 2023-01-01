@@ -105,8 +105,8 @@ Task(versionTask)
 });
 
 Task(buildTask)
-    .IsDependentOn(cleanTask)    
     .IsDependentOn(versionTask)
+    .IsDependentOn(cleanTask)    
     .Does(() =>
 {
      var buildSettings = new DotNetBuildSettings {
@@ -129,8 +129,8 @@ Task(buildTask)
 });
 
 Task(packTask)
- .IsDependentOn(buildTask)     
  .WithCriteria(isPublishBranch)
+ .IsDependentOn(buildTask)     
  .Does(() => {    
 	
 	 var projects = GetFiles(projFileGlob);
@@ -162,8 +162,8 @@ Task(packTask)
  });
 
 Task(nugetPushTask)
- .IsDependentOn(packTask)     
  .WithCriteria(isPublishBranch)
+ .IsDependentOn(packTask)     
  .Does(() => {    
 
     if(nugetApiKey == variableMissing) {
