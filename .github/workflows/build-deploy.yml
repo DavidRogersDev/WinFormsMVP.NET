@@ -30,4 +30,4 @@ jobs:
           NUGET_URL: ${{ secrets.NUGET_URL }}
         run: |
           dotnet tool restore
-          ./build.sh --target=build
+          ./build.sh --releaseNotes="Support for .NET 7"
