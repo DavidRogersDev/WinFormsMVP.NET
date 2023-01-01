@@ -30,7 +30,7 @@ var majorMinorPatch = string.Empty;
 var assemblyVersion = string.Empty;
 var commit = string.Empty;
 var fileVersion = string.Empty;
-var isPublishBranch = false;
+bool isPublishBranch = false;
 
 var artifactsRelativePath = "./artifacts";
 var nugetFiles = "./*.nupkg";
@@ -130,7 +130,7 @@ Task(buildTask)
 
 Task(packTask)
  .IsDependentOn(buildTask)     
-//  .WithCriteria(isPublishBranch)
+ .WithCriteria(isPublishBranch)
  .Does(() => {    
 	
 	 var projects = GetFiles(projFileGlob);
@@ -163,7 +163,7 @@ Task(packTask)
 
 Task(nugetPushTask)
  .IsDependentOn(packTask)     
- //.WithCriteria(isPublishBranch)
+ .WithCriteria(isPublishBranch)
  .Does(() => {    
 
     if(nugetApiKey == variableMissing) {
