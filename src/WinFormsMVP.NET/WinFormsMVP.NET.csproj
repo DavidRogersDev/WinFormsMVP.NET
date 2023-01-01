@@ -1,13 +1,34 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net5.0-windows;net6.0-windows</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<PackageId>WinFormsMVP.NET</PackageId>
+		<PackageTags>WinForms;MVP;WinFormsMVP;WinFormsMVP.NET;Model-View-Presenter;Design-Patterns</PackageTags>
+		<RepositoryUrl>https://github.com/DavidRogersDev/WinFormsMVP.NET.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/DavidRogersDev/WinformsMVP.NET</PackageProjectUrl>
+		<Copyright>David Rogers 2022</Copyright>
+		<Title>WinFormsMVP.NET</Title>
+		<Description>WinFormsMVP.NET is a simple Model View Presenter framework for the WinForms platform.</Description>		
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>David Rogers</Authors>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
-  </ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0-windows' ">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Images\icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>
