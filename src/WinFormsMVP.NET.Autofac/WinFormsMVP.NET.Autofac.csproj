@@ -7,6 +7,7 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<PackageId>WinFormsMVP.NET.Autofac</PackageId>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<PackageTags>WinForms MVP Autofac WinFormsMVP WinFormsMVP.NET Model-View-Presenter Design-Patterns</PackageTags>
 		<RepositoryUrl>https://github.com/DavidRogersDev/WinFormsMVP.NET.git</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/DavidRogersDev/WinformsMVP.NET</PackageProjectUrl>
@@ -37,6 +38,7 @@
 
 	<ItemGroup>
 		<None Include="Images\icon.png" Pack="true" PackagePath="\" />
+		<None Include="readme.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	
 </Project>
