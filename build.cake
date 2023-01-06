@@ -20,8 +20,10 @@ var nugetPushTask = "NugetPush";
 var target = Argument("target", defaultTask);
 var releaseNotes = Argument("releaseNotes", "NA");
 
+// Ensure release notes.
 if(releaseNotes.Equals("NA")) {
     Information("No release notes were submitted.");
+    releaseNotes = EnvironmentVariable("RELEASE_NOTES") ?? releaseNotes;
 }
 
 /**********************************************************************

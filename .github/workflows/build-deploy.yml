@@ -29,6 +29,6 @@ jobs:
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
           NUGET_URL: ${{ secrets.NUGET_URL }}
+          RELEASE_NOTES: ${{ secrets.RELEASE_NOTES }}
         run: |
-          dotnet tool restore
-          ./build.sh --releaseNotes="Added support for .NET 7."
+          ./build.sh
