@@ -5,7 +5,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<PackageId>WinFormsMVP.NET</PackageId>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<PackageTags>WinForms;MVP;WinFormsMVP;WinFormsMVP.NET;Model-View-Presenter;Design-Patterns</PackageTags>
