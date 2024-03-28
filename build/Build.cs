@@ -25,13 +25,13 @@ class Build : NukeBuild
     // Build Configs
     public static int Main() => Execute<Build>(x => x.Push);
 
-    private Target LocalBuild => _ => _
+    private Target CleanAndBuild => _ => _
     .Description(Description.LocalBuild)
     .DependsOn(Print, Clean, Restore, Compile);
 
-    private Target LocalBuildAndPack => _ => _
+    private Target CleanBuildAndPack => _ => _
     .Description(Description.LocalBuildAndPack)
-    .DependsOn(LocalBuild, Pack);
+    .DependsOn(CleanAndBuild, Pack);
 
     // Parameters and Environment Variables
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]

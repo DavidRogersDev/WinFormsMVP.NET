@@ -41,4 +41,4 @@ jobs:
           Configuration: Release
           IgnoreFailedSources: false
         run: |
-          ./src/build.sh
+          ./src/build.sh CleanBuildAndPack
