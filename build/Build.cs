@@ -62,6 +62,7 @@ class Build : NukeBuild
 
     Target Print => _ => _
     .Description(Description.Print)
+    .DependentFor(Clean)
     .Executes(() =>
     {
         Log.Information(LogMessage.ReleaseNotes, RELEASE_NOTES);
@@ -78,17 +79,17 @@ class Build : NukeBuild
 
         WantToPackThisBuild = GitVersion.BranchName.StartsWith(Branch.Release, StringComparison.OrdinalIgnoreCase)
             || GitVersion.BranchName.Equals(Branch.Main, StringComparison.OrdinalIgnoreCase);
+
+        ArtifactsDirectory.CreateOrCleanDirectory();
     });
 
     Target Clean => _ => _
         .Unlisted()
         .Description(Description.Clean)
-        .DependsOn(Print)
         .OnlyWhenStatic(() => IsLocalBuild)
         .Executes(() =>
         {
             SourceDirectory.GlobDirectories(FileSystem.CleanUpGlobPatterns).DeleteDirectories();
-            ArtifactsDirectory.CreateOrCleanDirectory();
         });
 
     Target Restore => _ => _
@@ -168,6 +169,7 @@ class Build : NukeBuild
         .Description(Description.Push)
         .OnlyWhenStatic(() => IsServerBuild) // checked before the build steps run.
         .OnlyWhenStatic(() => Configuration.Equals(Configuration.Release))
+        .OnlyWhenDynamic(() => WantToPackThisBuild)
         .Requires(() => NUGET_API_KEY)
         .Requires(() => NUGET_URL)
         .Requires(() => PACKAGES_GITHUB_NUGET_PAT)
