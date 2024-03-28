@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feature
       - 'release/**'
     tags:
       - '\d+\.\d+\.\d+'
