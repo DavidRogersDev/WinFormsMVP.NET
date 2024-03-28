@@ -2,33 +2,43 @@ name: nuget-build-deploy
 on:
   push:
     branches:
-      - main
-      - 'publish/**'
-  pull_request:
-    branches:
-      - main
+      - '**'
+    tags:
+      - '\d+\.\d+\.\d+'
+    paths-ignore:
+      - '**/*.md'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_type }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: Build 🏗
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: ['6.0.x']
+        dotnet-version: ['8.0.x']
     steps:
       - name: Setup .NET ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Display dotnet version
+      - name: Display dotnet version 🧐
         run: dotnet --version
-      - name: Check out Code
-        uses: actions/checkout@v3
+      - name: Check out Code 🛒
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Run cake
+      - name: Dispatch Nuke 🚀
         shell: bash
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-          NUGET_URL: ${{ secrets.NUGET_URL }}
-          RELEASE_NOTES: ${{ secrets.RELEASE_NOTES }}
+          NUGET_URL: ${{ vars.NUGET_URL }}
+          PACKAGES_GITHUB_NUGET_PAT: ${{ secrets.PACKAGES_GITHUB_NUGET_PAT }}
+          PACKAGES_GITHUB_NUGET_URL: ${{ vars.PACKAGES_GITHUB_NUGET_URL }}
+          RELEASE_NOTES: ${{ vars.RELEASE_NOTES }}
+          Configuration: Release
+          IgnoreFailedSources: false
         run: |
-          ./build.sh
+          ./src/build.sh
