@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -33,6 +33,10 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
 		<PackageReference Include="SimpleInjector" Version="5.4.4" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-windows'">
+		<PackageReference Include="SimpleInjector" Version="5.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
